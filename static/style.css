@@ -1,0 +1,604 @@
+/* 1. BASIC SETTINGS */
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    padding: 0 0 50px 0;
+    background-color: #080b11;
+    color: white;
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 2. BLUE BACKGROUND GLOW */
+body::before {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    top: -200px;
+    left: -180px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #0015ff 0%,
+        rgba(0, 21, 255, 0) 70%
+    );
+    filter: blur(90px);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+}
+body::after {
+    content: "";
+    position: fixed;
+    width: 550px;
+    height: 550px;
+    bottom: -220px;
+    right: -180px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #00baff 0%,
+        rgba(0, 186, 255, 0) 70%
+    );
+    filter: blur(90px);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 3. KEEP CONTENT ABOVE GLOW */
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 4. HEADER */
+header {
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 25px;
+}
+h1 {
+    text-align: center;
+    font-size: 42px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow:
+        0 0 15px rgba(0, 186, 255, 0.35);
+}
+header h3 {
+    text-align: center;
+    color: #8a92a6;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* 5. NAVIGATION BAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 20px 50px;
+    margin:  0;
+    background: rgba(0, 186, 255, 0.06);
+    color: white;
+    z-index: 10;
+}
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+.navbar nav {
+    display: flex;
+    gap: 28px;
+}
+.navbar nav a {
+    color: #a0aec0;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 4px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.navbar nav a:hover {
+    color: white;
+}
+.navbar nav a.active {
+    color: white;
+}
+.navbar nav a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 4px;
+    right: 4px;
+    height: 3px;
+    background-color: #00baff;
+    border-radius: 2px;
+}
+
+/* 6. HORIZONTAL LINE */
+hr {
+    border: none;
+    height: 1px;
+    margin: 35px 0;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #00baff,
+        transparent
+    );
+    opacity: 0.5;
+}
+
+/* 7. INTRODUCTION */
+.intro-section {
+    max-width: 1000px;
+    margin: auto;
+}
+.intro {
+    display: inline-block;
+    padding: 5px 18px;
+    border-left: 4px solid #00baff;
+    background: rgba(0, 186, 255, 0.06);
+    border-radius: 5px;
+}
+.intro h4 {
+    margin: 0;
+    font-size: 23px;
+}
+
+/* 8. SECTION HEADINGS */
+h4 {
+    color: white;
+    font-size: 23px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-shadow:
+        0 0 10px rgba(0, 186, 255, 0.2);
+}
+h2 {
+    text-align: left;
+    color: #8a92a6;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+h5 {
+    text-align: center;
+    color: #dfe3eb;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* 9. PARAGRAPHS */
+p {
+    color: #d1d5db;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* 10. CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 25px;
+}
+.card {
+    padding: 24px;
+    min-height: 150px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(112, 187, 255, 0.18);
+    border-radius: 18px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 186, 255, 0.6);
+    box-shadow:
+        0 0 25px rgba(0, 186, 255, 0.18);
+}
+.card h4 {
+    margin: 0;
+    font-size: 18px;
+    color: white;
+}
+.card small {
+    display: block;
+    margin-top: 12px;
+    color: #aeb7c8;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: normal;
+}
+
+/* 11. HOME PAGE NAVIGATION */
+pre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+    padding: 10px;
+    white-space: normal;
+    font-family: inherit;
+}
+pre a {
+    display: inline-block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    background: rgba(0, 21, 255, 0.15);
+    border: 1px solid rgba(0, 186, 255, 0.35);
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+pre a:hover {
+    background: rgba(0, 186, 255, 0.18);
+    border-color: #00baff;
+    box-shadow:
+        0 0 18px rgba(0, 186, 255, 0.25);
+    transform: translateY(-3px);
+}
+
+/* 12. AI & JOBS */
+.MR h2 {
+    display: inline-block;
+    padding: 5px 18px;
+    border-left: 4px solid #00baff;
+    background: rgba(0, 186, 255, 0.06);
+    border-radius: 5px;
+    color: white;
+}
+.job-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 25px;
+    padding: 5px 18px;
+}
+.job-box {
+    padding: 5px;
+    background: rgba(0, 186, 255, 0.06);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+.job-box h3 {
+    color: #70bbff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* 13. AI TOOLS */
+.tools-section {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+.tools-section h2 {
+    text-align: center;
+    color: white;
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+.section-intro {
+    text-align: center;
+    color: #8a92a6;
+    font-size: 16px;
+    max-width: 700px;
+    margin: 0 auto 35px;
+    line-height: 1.6;
+}
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 330px;
+    text-align: center;
+}
+.tool-card h3 {
+    color: #70bbff;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+.tool-card p {
+    color: #8a92a6;
+    line-height: 1.6;
+    font-size: 15px;
+}
+.tool-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: auto;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+.tool-links a {
+    color: #70bbff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 186, 255, 0.25);
+    border-radius: 7px;
+    transition: 0.3s ease;
+}
+.tool-links a:hover {
+    color: white;
+    background: rgba(0, 186, 255, 0.12);
+    border-color: #00baff;
+    box-shadow:
+        0 0 12px rgba(0, 186, 255, 0.2);
+}
+
+/* 14. CATEGORY CARDS */
+.category-card {
+    display: block;
+    padding: 24px;
+    min-height: 180px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(112, 187, 255, 0.18);
+    border-radius: 18px;
+    backdrop-filter: blur(16px);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.category-card:hover {
+    transform: translateY(-6px);
+    border-color: #00baff;
+    box-shadow:
+        0 0 25px rgba(0, 186, 255, 0.18);
+    background: rgba(0, 186, 255, 0.08);
+}
+.category-card h4 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: white;
+}
+.category-card small {
+    display: block;
+    margin-top: 12px;
+    color: #aeb7c8;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.category-icon {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+/* 15. SAFETY TIPS */
+.tips {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 25px 30px;
+    background: rgba(0, 186, 255, 0.06);
+    border: 1px solid rgba(0, 186, 255, 0.18);
+    border-radius: 18px;
+}
+.tips h4 {
+    margin-top: 0;
+}
+.tips li {
+    color: #d1d5db;
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+/* 16. FOOTER */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    border-top: 1px solid rgba(0, 186, 255, 0.2);
+}
+footer p {
+    color: #8a92a6;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* 17. TABLET */
+@media (max-width: 800px) {
+    body {
+        padding: 35px 20px;
+    }
+    h1 {
+        font-size: 32px;
+    }
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .navbar {
+        padding: 18px 30px;
+        margin: -35px 0 40px 0;
+    }
+    .navbar nav {
+        gap: 15px;
+    }
+    .job-points {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 18. MOBILE */
+@media (max-width: 550px) {
+    body {
+        padding: 25px 15px;
+    }
+    h1 {
+        font-size: 27px;
+    }
+    header h3 {
+        font-size: 16px;
+    }
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    .navbar {
+        position: relative;
+        margin: -25px 0 30px 0;
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .navbar nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .tools-section {
+        padding: 25px 5px;
+    }
+    .tools-section h2 {
+        font-size: 30px;
+    }
+    .tool-card {
+        min-height: auto;
+    }
+    .tool-links {
+        margin-top: 10px;
+    }
+    .job-points {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 19. AI PROMPT HELPER */
+.prompt-page {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.prompt-intro {
+    margin-top: 30px;
+}
+
+.prompt-box {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(112,187,255,0.18);
+    border-radius: 18px;
+    backdrop-filter: blur(16px);
+}
+
+.prompt-box h2 {
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.prompt-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.prompt-box label {
+    color: #dfe3eb;
+    font-size: 15px;
+    margin: 15px 0 8px;
+}
+
+.prompt-box select,
+.prompt-box textarea {
+    width: 100%;
+    padding: 13px;
+    background: rgba(0,0,0,0.25);
+    color: white;
+    border: 1px solid rgba(0,186,255,0.25);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+}
+
+.prompt-box select:focus,
+.prompt-box textarea:focus {
+    border-color: #00baff;
+    box-shadow: 0 0 12px rgba(0,186,255,0.15);
+}
+
+.prompt-box option {
+    background: #080b11;
+    color: white;
+}
+
+.prompt-box button {
+    margin-top: 25px;
+    padding: 13px 20px;
+    background: rgba(0,186,255,0.12);
+    color: white;
+    border: 1px solid rgba(0,186,255,0.5);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.prompt-box button:hover {
+    background: rgba(0,186,255,0.2);
+    border-color: #00baff;
+    box-shadow: 0 0 18px rgba(0,186,255,0.2);
+    transform: translateY(-2px);
+}
+
+.generated-prompt {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.prompt-result {
+    margin-top: 25px;
+    padding: 25px;
+    background: rgba(0,186,255,0.06);
+    border: 1px solid rgba(0,186,255,0.25);
+    border-radius: 12px;
+}
+
+.prompt-result p {
+    color: #dfe3eb;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.prompt-note {
+    color: #8a92a6;
+    text-align: center;
+    font-size: 14px;
+}
+
+@media (max-width: 550px) {
+    .prompt-box {
+        padding: 20px;
+    }
+
+    .prompt-box h2 {
+        font-size: 24px;
+    }
+}
