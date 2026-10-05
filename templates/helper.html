@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>AI Prompt Helper</title>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">◉ AI Lens</div>
+    <nav>
+    <a href="/">Home</a>
+    <a href="/ai-tools">AI Tools</a>
+    <a href="/ai-jobs">AI & Jobs</a>
+    <a href="/helper">Prompt Helper</a>
+</nav>
+</header>
+
+<header>
+    <h1>🧠 AI Prompt Helper</h1>
+    <h3>Create better prompts for your study and everyday tasks</h3>
+</header>
+
+<main class="prompt-page">
+
+    <section class="prompt-intro">
+        <div class="intro">
+            <h4>How Can This Help You?</h4>
+        </div>
+        <p>
+            A good prompt helps AI understand what you need.
+            Enter your task below and AI Lens will create a clear,
+            structured prompt that you can use with AI tools.
+        </p>
+    </section>
+
+    <hr>
+
+    <section class="prompt-box">
+
+        <h2>Create Your Prompt</h2>
+
+        <form action="/generate-prompt" method="POST">
+
+            <label for="subject">Subject / Area</label>
+            <select id="subject" name="subject" required>
+                <option value="">Select an option</option>
+                <option value="General">General</option>
+                <option value="Programming">Programming</option>
+                <option value="DBMS">DBMS</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Cloud Computing">Cloud Computing</option>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="Writing">Writing</option>
+                <option value="Research">Research</option>
+            </select>
+
+            <label for="task">What do you want AI to do?</label>
+            <select id="task" name="task" required>
+                <option value="">Select a task</option>
+                <option value="Explain">Explain a topic</option>
+                <option value="Summarize">Summarize information</option>
+                <option value="Practice">Create practice questions</option>
+                <option value="Code">Help with coding</option>
+                <option value="Notes">Create study notes</option>
+                <option value="Ideas">Generate ideas</option>
+                <option value="Improve">Improve my writing</option>
+            </select>
+
+            <label for="topic">Enter your topic or task</label>
+            <textarea id="topic" name="topic" rows="5" placeholder="Example: Explain normalization in DBMS" required></textarea>
+
+            <label for="level">Your Level</label>
+            <select id="level" name="level" required>
+                <option value="">Select your level</option>
+                <option value="Beginner">Beginner</option>
+                <option value="School Student">School Student</option>
+                <option value="College Student">College Student</option>
+                <option value="BCA Student">BCA Student</option>
+            </select>
+
+            <button type="submit">✨ Generate Prompt</button>
+
+        </form>
+
+    </section>
+
+    {% if prompt %}
+    <section class="generated-prompt">
+
+        <div class="intro">
+            <h4>✨ Your Generated Prompt</h4>
+        </div>
+
+        <div class="prompt-result">
+            <p>{{ prompt }}</p>
+        </div>
+
+        <p class="prompt-note">
+            Copy this prompt and use it with your preferred AI tool.
+        </p>
+
+    </section>
+    {% endif %}
+
+</main>
+
+<footer>
+    <p>AI Lens — AI Awareness Among Students</p>
+</footer>
+
+</body>
+</html>
